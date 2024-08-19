@@ -1,0 +1,44 @@
+CODIGO 1:
+CONSOLAS DE VIDEOJUEGOS 
+
+
+class consola:
+    def __init__(self, nombre, fabricante, año_lanzamiento):
+        self.nombre = nombre
+        self.fabricante = fabricante
+        self.año_lanzamiento = año_lanzamiento
+
+    def encender(self):
+        return f"La consola {self.nombre} se ha encendido."
+
+    def apagar(self):
+        return f"La consola {self.nombre} se ha apagado."
+
+# Subclase (opcional)
+class consola_portatil(consola):
+    def __init__(self, nombre, fabricante, año_lanzamiento, pantalla, bateria):
+        super().__init__(nombre, fabricante, año_lanzamiento)
+        self.pantalla = pantalla
+        self.bateria = bateria
+
+    def es_portatil(self):
+        return "Esta consola es portátil."
+
+# Crear una lista de consolas
+consolas = [
+    consola("PlayStation 5", "Sony", 2020),
+    consola("Xbox Series X", "Microsoft", 2020),
+    consola_portatil("Nintendo Switch", "Nintendo", 2017, "LCD táctil", "4310 mAh")
+]
+
+# Función para probar una consola
+def probar_consola(consola):
+    print(consola.encender())
+    print(consola.apagar())
+
+# Probar cada consola de la lista
+for consola in consolas:
+    probar_consola(consola)
+
+# Prueba adicional para la consola portátil
+print(consolas[2].es_portatil())
