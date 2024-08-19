@@ -1,0 +1,59 @@
+CODIGO 2 
+BAFLES DE SONIDO 
+
+#clase base 
+
+class Bafle:
+    def __init__(self, marca, modelo, año_fabricacion, potencia):
+        self.marca = marca
+        self.modelo = modelo
+        self.año_fabricacion = año_fabricacion
+        self.potencia = potencia
+        self.volumen = 10
+        self.puerto = "aux"
+
+    def encender(self):
+        
+        return f"El {self.marca} {self.modelo} está encendido."
+    
+    
+    def apagar(self):
+        
+         return f"El {self.marca} {self.modelo} está encendido."
+
+
+    def ajustar_volumen(self, nuevo_volumen):
+        self.volumen = nuevo_volumen
+        return f"El volumen del bafle {self.marca} {self.modelo} se ha ajustado a {self.volumen}%."
+
+    def mostrar_estado(self):
+        print(f"Bafle {self.marca} {self.modelo}:")
+        print(f"  Volumen: {self.volumen}%")
+        print(f"  Puerto: {self.puerto}")
+        
+# sub clase
+
+class BaflePortatil(Bafle):
+    def __init__(self, marca, modelo, año_fabricacion, potencia, bateria):
+        super().__init__(marca, modelo, año_fabricacion, potencia)
+        self.bateria = bateria
+
+    def verificar_bateria(self):
+        print(f"La batería del bafle {self.marca} {self.modelo} está en {self.bateria}%.")
+
+# Creando una lista de bafles
+bafles = [
+    BaflePortatil("JBL", "Flip 5", 2020, 20, 47),
+    Bafle("Sony", "SRS-XB23", 2021, 20),
+    Bafle("Bose", "SoundLink Revolve+", 2019, 16)
+]
+
+# Ajustando el volumen y el puerto del primer bafle
+bafles[0].ajustar_volumen(100)
+bafles[0].puerto = "Bluetooth"
+
+# Mostrando el estado de todos los bafles
+for bafle in bafles:
+    bafle.mostrar_estado()
+    if isinstance(bafle, BaflePortatil):
+        bafle.verificar_bateria()
